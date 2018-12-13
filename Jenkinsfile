@@ -9,9 +9,9 @@ pipeline {
 			sh "unzip -o apache-maven-3.1.1-bin.zip"
 			sh "export M2_HOME=/home/centos/apache-maven-3.1.1"
 			sh "export MAVEN_HOME=/home/centos/apache-maven-3.1.1"
-			sh "echo $M2_HOME"
+			
 			sh "export PATH=$PATH:$M2_HOME/bin"
-			sh "echo $PATH"
+		
                     
 		}
 	    }
