@@ -13,6 +13,7 @@ pipeline {
 	    stage('Build') {
 		    steps {
 			    script{
+				     checkout scm
 		    try {
 			    echo 'get maven version'
 			 sh " wget http://www-us.apache.org/dist/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.zip"
@@ -29,7 +30,7 @@ pipeline {
 			    
 			    
 			    
-                        sh "\$(pwd)/apache-maven-3.1.1/bin/mvn clean install -U -Dmaven.test.skip=true"
+                        sh "\$(pwd)/apache-maven-3.1.1/bin/mvn clean install"
                         currentBuild.result = 'SUCCESS'
                     } catch (Exception err) {
                         currentBuild.result = 'FAILURE'
