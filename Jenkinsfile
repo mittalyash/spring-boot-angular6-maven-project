@@ -1,18 +1,16 @@
 pipeline {
     agent any
+	 environment {
+		 M2_HOME="/home/centos/apache-maven-3.1.1"
+		 MAVEN_HOME="/home/centos/apache-maven-3.1.1"
+		 PATH="$PATH:$M2_HOME/bin"
+  }
     stages {
         stage('CodeCheckOut') {
             steps {
                 script {
                     checkout scm
-			sh " wget http://www-us.apache.org/dist/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.zip"
-			sh "unzip -o apache-maven-3.1.1-bin.zip"
-			sh "set M2_HOME=/home/centos/apache-maven-3.1.1"
-			sh "set MAVEN_HOME=/home/centos/apache-maven-3.1.1"
 			
-			sh "set PATH=$PATH:$M2_HOME/bin"
-		
-                    
 		}
 	    }
 	}
