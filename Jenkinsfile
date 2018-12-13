@@ -20,9 +20,9 @@ pipeline {
 			    sh "pwd"
 			sh "ls -l"
 			   
-				  sh "export M2_HOME=$(pwd)/apache-maven-3.1.1"
-				   sh "export MAVEN_HOME=$(pwd)/apache-maven-3.1.1"
-			            sh "export PATH=$PATH:$M2_HOME/bin"
+				  sh "set M2_HOME=$(pwd)/apache-maven-3.1.1"
+				   sh "set MAVEN_HOME=$(pwd)/apache-maven-3.1.1"
+			            sh "set PATH=$PATH:$M2_HOME/bin"
 			    sh "echo $M2_HOME"
 			    
 			    
