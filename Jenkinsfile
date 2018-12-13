@@ -25,7 +25,7 @@ pipeline {
 			            env.PATH="$PATH:$M2_HOME/bin"
 			    sh "echo $M2_HOME"
 			    
-			    sh "ls -l \$(pwd)/apache-maven-3.1.1"
+			    sh "ls -l \$(pwd)/apache-maven-3.1.1/bin"
 			    
 			    
 			    
