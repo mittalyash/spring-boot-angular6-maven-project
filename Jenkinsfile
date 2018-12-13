@@ -15,6 +15,7 @@ pipeline {
 				 
                     checkout scm
 		    try {
+			    echo maven --version
                         sh "mvn clean install -U -Dmaven.test.skip=true"
                         currentBuild.result = 'SUCCESS'
                     } catch (Exception err) {
