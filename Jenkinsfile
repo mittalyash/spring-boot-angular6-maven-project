@@ -28,7 +28,7 @@ pipeline {
 			    
 			    sh "ls -l \$(pwd)/apache-maven-3.1.1/bin"
 			    
-			    sh "\$(pwd)/apache-maven-3.1.1/bin/mvn --version"
+			    sh ".\$(pwd)/apache-maven-3.1.1/bin/mvn --version"
 			    
                         sh "\$(pwd)/apache-maven-3.1.1/bin/mvn clean install"
                         currentBuild.result = 'SUCCESS'
