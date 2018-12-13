@@ -18,7 +18,7 @@ pipeline {
 			 sh " wget http://www-us.apache.org/dist/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.zip"
 			sh "unzip -o apache-maven-3.1.1-bin.zip"
 			    sh "pwd"
-			sh "ls-l"
+			sh "ls -l"
 			
 			   
 				    env.M2_HOME="/home/centos/apache-maven-3.1.1"
