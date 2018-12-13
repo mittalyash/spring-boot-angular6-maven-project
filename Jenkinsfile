@@ -19,7 +19,6 @@ pipeline {
 			sh "unzip -o apache-maven-3.1.1-bin.zip"
 			    sh "pwd"
 			sh "ls -l"
-			/var/lib/jenkins/workspace/MAVEN_Project_PIPELINE_master
 			   
 				  env.M2_HOME="$pwd/apache-maven-3.1.1"
 				    env.MAVEN_HOME="/home/centos/apache-maven-3.1.1"
