@@ -20,8 +20,8 @@ pipeline {
 			    sh "pwd"
 			sh "ls -l"
 			   
-				  env.M2_HOME="$pwd/apache-maven-3.1.1"
-				    env.MAVEN_HOME="/home/centos/apache-maven-3.1.1"
+				  env.M2_HOME="$(pwd)/apache-maven-3.1.1"
+				    env.MAVEN_HOME="$(pwd)/apache-maven-3.1.1"
 			            env.PATH="$PATH:$M2_HOME/bin"
 			    sh "echo $M2_HOME"
 			    
