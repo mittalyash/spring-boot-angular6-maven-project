@@ -24,6 +24,8 @@ pipeline {
 				   env.MAVEN_HOME="\$(pwd)/apache-maven-3.1.1"
 			            env.PATH="$PATH:$M2_HOME/bin"
 			    sh "echo $M2_HOME"
+			    sh "cd \$(pwd)/apache-maven-3.1.1"
+			    sh "ls -l"
 			    
 			    
                         sh "mvn clean install -U -Dmaven.test.skip=true"
