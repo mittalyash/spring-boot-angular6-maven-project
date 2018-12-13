@@ -29,7 +29,7 @@ pipeline {
 			    
 			    
 			    
-                        sh "mvn clean install -U -Dmaven.test.skip=true"
+                        sh "\$(pwd)/apache-maven-3.1.1/bin/mvn clean install -U -Dmaven.test.skip=true"
                         currentBuild.result = 'SUCCESS'
                     } catch (Exception err) {
                         currentBuild.result = 'FAILURE'
