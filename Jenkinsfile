@@ -1,45 +1,42 @@
 pipeline {
-    agent any
-	 
-    stages {
-        stage('CodeCheckOut') {
-            steps {
-                script {
-                    checkout scm
-			
-		}
-	    }
-	}
-	    stage('Build') {
-		    steps {
-			    script{
-				     checkout scm
-		    try {
-			    
-			    def mvnHome = tool 'MAVEN_3.1'
-			 //   echo 'get maven version'
-		//	 sh " wget http://www-us.apache.org/dist/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.zip"
-		//	sh "unzip -o apache-maven-3.1.1-bin.zip"
-		//	    sh "pwd"
-		//	sh "ls -l"
-			   
-			//	  env.M2_HOME="\$(pwd)/apache-maven-3.1.1"
-			//	   env.MAVEN_HOME="\$(pwd)/apache-maven-3.1.1"
-			//            env.PATH="$PATH:$M2_HOME/bin"
-			//    sh "echo $M2_HOME"
-			    
-			//    sh "ls -l \$(pwd)/apache-maven-3.1.1/bin"
-			    
-			//    sh ".\$(pwd)/apache-maven-3.1.1/bin/mvn --version"
-			    
-                        sh "mvn clean install"
-                        currentBuild.result = 'SUCCESS'
-                    } catch (Exception err) {
-                        currentBuild.result = 'FAILURE'
-                        sh "exit 1"
-                    }
-			    }
-			    	}
+  
+ agent any
+stages {
+  stage('CodeCheckOut') {
+    steps {
+      script {
+       checkout scm
+       
+       }
+      }
+     }      
+      stage('Build customer app code'){
+        steps {
+        script {
+         sh 'sudo apt-get -y update'
+         sh 'sudo apt-get -y install default-jdk'
+         sh 'sudo apt-get -y install maven'
+       sh 'mvn clean install '
+          sh'mvn test site'
+       }
+      }
+     }
+ stage('Docker Build and push'){
+  steps{
+   script{
+    sh 'sudo docker build -t mittalyash32/myapp .'
+     sh " sudo docker login -u=$env.dockerid -p=$env.dockerpassword"
+     sh " sudo docker push mittalyash32/myapp "
+     sh "sudo docker run -p 8081:9080 mittalyash32/myapp "
+   
         }
-    }   
+   }
+   
+   
+   
+  }
+ 
+ 
+ 
+    }
 }
