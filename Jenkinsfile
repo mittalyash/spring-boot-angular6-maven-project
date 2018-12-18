@@ -17,17 +17,17 @@ stages {
          sh 'sudo apt-get -y install default-jdk'
          sh 'sudo apt-get -y install maven'
        sh 'mvn clean install '
-          sh'mvn test site'
+          
        }
       }
      }
  stage('Docker Build and push'){
   steps{
    script{
-    sh 'sudo docker build -t mittalyash32/myapp .'
+    sh 'sudo docker build -t mittalyash32/myapp1 .'
      sh " sudo docker login -u=$env.dockerid -p=$env.dockerpassword"
-     sh " sudo docker push mittalyash32/myapp "
-     sh "sudo docker run -p 8081:9080 mittalyash32/myapp "
+     sh " sudo docker push mittalyash32/myapp1 "
+     sh "sudo docker run -p 8081:8080 mittalyash32/myapp1 "
    
         }
    }
